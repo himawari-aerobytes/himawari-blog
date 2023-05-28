@@ -1,5 +1,6 @@
 import type { GatsbyConfig } from "gatsby";
-
+import * as dotenv from "dotenv";
+dotenv.config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Himawari-Blog`,
@@ -12,7 +13,7 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url": "https://blog.himawari.engineerseed.com/graphql"
+      "url": process.env.WORDPRESS_URL
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp"]
 };
