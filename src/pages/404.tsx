@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
+import CommonFrame from "../components/CommonFrame"
 
 const pageStyles = {
   color: "#232129",
@@ -9,7 +10,7 @@ const pageStyles = {
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
-  maxWidth: 320,
+  maxWidth: 500,
 }
 
 const paragraphStyles = {
@@ -24,11 +25,14 @@ const codeStyles = {
 }
 
 const NotFoundPage: React.FC<PageProps> = () => {
-  return (
+
+  const body = 
     <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
+      <h1 style={headingStyles}>ご指定のページは存在しません</h1>
       <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
+      おそらく、URLが正しく入力されていないか、またはページが移動または削除された可能性があります。ご不便をおかけして申し訳ありません。
+
+もしご自身でURLを入力された場合は、入力したURLが正しいかご確認ください。もしURLをクリックしてこのページにリダイレクトされた場合は、サイトの管理者に問題を報告していただけると幸いです。
         <br />
         {process.env.NODE_ENV === "development" ? (
           <>
@@ -38,10 +42,11 @@ const NotFoundPage: React.FC<PageProps> = () => {
           </>
         ) : null}
         <br />
-        <Link to="/">Go home</Link>.
+        <Link to="/">ホームに戻る</Link>.
       </p>
     </main>
-  )
+  
+  return (CommonFrame(body));
 }
 
 export default NotFoundPage

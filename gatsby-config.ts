@@ -1,10 +1,13 @@
 import type { GatsbyConfig } from "gatsby";
-import * as dotenv from "dotenv";
-dotenv.config();
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Himawari-Blog`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: process.env.WORDPRESS_URL
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -16,6 +19,7 @@ const config: GatsbyConfig = {
       "url": process.env.WORDPRESS_URL
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp"]
+
 };
 
 export default config;
